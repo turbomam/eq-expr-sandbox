@@ -31,6 +31,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/annual_income/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://turbomam.github.io/eq-expr-sandbox/birth_date/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
@@ -47,6 +52,16 @@
     </url>
     <url>
          <loc>https://turbomam.github.io/eq-expr-sandbox/eq-expr-sandbox/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/high_income/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/high_savings/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -71,12 +86,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/savings/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://turbomam.github.io/eq-expr-sandbox/types/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://turbomam.github.io/eq-expr-sandbox/vital_status/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/wealthy/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

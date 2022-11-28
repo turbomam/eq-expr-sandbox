@@ -212,13 +212,18 @@
       NamedThing &lt;|-- Person
 
       Person : age_in_years
+      Person : annual_income
       Person : birth_date
       Person : description
+      Person : high_income
+      Person : high_savings
       Person : id
       Person : name
       Person : of_usa_voting_age
       Person : primary_email
+      Person : savings
       Person : vital_status
+      Person : wealthy
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -240,9 +245,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../primary_email/">primary_email</a></td>
-<td>0..1 <br/> NONE</td>
-<td>The main email address of a person</td>
+<td><a href="../age_in_years/">age_in_years</a></td>
+<td>1..1 <br/> <a href="xsd:integer">xsd:integer</a></td>
+<td>Number of years since birth</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../annual_income/">annual_income</a></td>
+<td>1..1 <br/> <a href="xsd:integer">xsd:integer</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -252,9 +263,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../age_in_years/">age_in_years</a></td>
-<td>0..1 <br/> <a href="xsd:integer">xsd:integer</a></td>
-<td>Number of years since birth</td>
+<td><a href="../of_usa_voting_age/">of_usa_voting_age</a></td>
+<td>0..1 <br/> <a href="xsd:boolean">xsd:boolean</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../primary_email/">primary_email</a></td>
+<td>0..1 <br/> NONE</td>
+<td>The main email address of a person</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../savings/">savings</a></td>
+<td>1..1 <br/> <a href="xsd:integer">xsd:integer</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -264,15 +287,27 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../of_usa_voting_age/">of_usa_voting_age</a></td>
+<td><a href="../wealthy/">wealthy</a></td>
 <td>0..1 <br/> <a href="xsd:boolean">xsd:boolean</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
+<td><a href="../high_income/">high_income</a></td>
+<td>0..1 <br/> <a href="xsd:boolean">xsd:boolean</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../high_savings/">high_savings</a></td>
+<td>0..1 <br/> <a href="xsd:boolean">xsd:boolean</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
 <td>0..1 <br/> NONE</td>
-<td>A human-readable name for a thing</td>
+<td>A human-readable description for a thing</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -282,9 +317,9 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../description/">description</a></td>
+<td><a href="../name/">name</a></td>
 <td>0..1 <br/> NONE</td>
-<td>A human-readable description for a thing</td>
+<td>A human-readable name for a thing</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -342,11 +377,16 @@ from_schema: https://w3id.org/turbomam/eq-expr-sandbox
 rank: 1000
 is_a: NamedThing
 slots:
-- primary_email
-- birth_date
 - age_in_years
-- vital_status
+- annual_income
+- birth_date
 - of_usa_voting_age
+- primary_email
+- savings
+- vital_status
+- wealthy
+- high_income
+- high_savings
 slot_usage:
   primary_email:
     name: primary_email
@@ -372,6 +412,48 @@ slot_usage:
     - Person
     pattern: ^\S+@[\S+\.]+\S+
 attributes:
+  age_in_years:
+    name: age_in_years
+    description: Number of years since birth
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: age_in_years
+    owner: Person
+    domain_of:
+    - Person
+    range: integer
+    required: true
+  annual_income:
+    name: annual_income
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: annual_income
+    owner: Person
+    domain_of:
+    - Person
+    range: integer
+    required: true
+  birth_date:
+    name: birth_date
+    description: Date on which a person is born
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    slot_uri: schema:birthDate
+    alias: birth_date
+    owner: Person
+    domain_of:
+    - Person
+    range: date
+  of_usa_voting_age:
+    name: of_usa_voting_age
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: of_usa_voting_age
+    owner: Person
+    domain_of:
+    - Person
+    range: boolean
+    equals_expression: '{age_in_years} &gt;= 18'
   primary_email:
     name: primary_email
     description: The main email address of a person
@@ -385,27 +467,16 @@ attributes:
     - Person
     range: string
     pattern: ^\S+@[\S+\.]+\S+
-  birth_date:
-    name: birth_date
-    description: Date on which a person is born
+  savings:
+    name: savings
     from_schema: https://w3id.org/turbomam/eq-expr-sandbox
     rank: 1000
-    slot_uri: schema:birthDate
-    alias: birth_date
-    owner: Person
-    domain_of:
-    - Person
-    range: date
-  age_in_years:
-    name: age_in_years
-    description: Number of years since birth
-    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
-    rank: 1000
-    alias: age_in_years
+    alias: savings
     owner: Person
     domain_of:
     - Person
     range: integer
+    required: true
   vital_status:
     name: vital_status
     description: living or dead status
@@ -416,16 +487,38 @@ attributes:
     domain_of:
     - Person
     range: PersonStatus
-  of_usa_voting_age:
-    name: of_usa_voting_age
+  wealthy:
+    name: wealthy
     from_schema: https://w3id.org/turbomam/eq-expr-sandbox
     rank: 1000
-    alias: of_usa_voting_age
+    alias: wealthy
     owner: Person
     domain_of:
     - Person
     range: boolean
-    equals_expression: '{age_in_years} &gt;= 18'
+    any_of:
+    - equals_expression: '{annual_income} &gt; 100000'
+    - equals_expression: '{saving } &gt; 500000'
+  high_income:
+    name: high_income
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: high_income
+    owner: Person
+    domain_of:
+    - Person
+    range: boolean
+    equals_expression: annual_income &gt; 100000
+  high_savings:
+    name: high_savings
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: high_savings
+    owner: Person
+    domain_of:
+    - Person
+    range: boolean
+    equals_expression: savings &gt; 500000
   id:
     name: id
     description: A unique identifier for a thing
