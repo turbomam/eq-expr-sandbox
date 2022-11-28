@@ -1,0 +1,6 @@
+name: eq_expr_sandbox
+author: Mark Andrew Miller <MAM@lbl.gov>
+description: A sandbox for experimenting with LinkML's equals_expression slot
+source_schema_path: src/eq_expr_sandbox/schema/eq_expr_sandbox.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums
