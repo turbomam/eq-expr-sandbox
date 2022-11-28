@@ -36,15 +36,20 @@ classes:
     description: >-
       Represents a Person
     slots:
-      - primary_email
-      - birth_date
       - age_in_years
-      - vital_status
+      - annual_income
+      - birth_date
       - of_usa_voting_age
+      - primary_email
+      - savings
+      - vital_status
+      - wealthy
+      - high_income
+      - high_savings
     slot_usage:
       primary_email:
         pattern: "^\\S+@[\\S+\\.]+\\S+"
-        
+
   PersonCollection:
     tree_root: true
     description: >-
@@ -56,6 +61,23 @@ classes:
         inlined: true
 
 slots:
+  annual_income:
+    range: integer
+    required: true
+  savings:
+    range: integer
+    required: true
+  high_income:
+    range: boolean
+    equals_expression: annual_income > 100000
+  high_savings:
+    range: boolean
+    equals_expression: savings > 500000
+  wealthy:
+    range: boolean
+    any_of:
+      - equals_expression: "{annual_income} > 100000"
+      - equals_expression: "{saving } > 500000"
   of_usa_voting_age:
     range: boolean
     equals_expression: "{age_in_years} >= 18"
@@ -80,16 +102,17 @@ slots:
   age_in_years:
     range: integer
     description: Number of years since birth
+    required: true
   vital_status:
     range: PersonStatus
     description: living or dead status
-    
+
 enums:
   PersonStatus:
     permissible_values:
       ALIVE:
         description: the person is living
-        meaning: PATO:0001421 
+        meaning: PATO:0001421
       DEAD:
         description: the person is deceased
         meaning: PATO:0001422
