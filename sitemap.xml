@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://turbomam.github.io/eq-expr-sandbox/of_usa_voting_age/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://turbomam.github.io/eq-expr-sandbox/primary_email/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>

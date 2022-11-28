@@ -216,6 +216,7 @@
       Person : description
       Person : id
       Person : name
+      Person : of_usa_voting_age
       Person : primary_email
       Person : vital_status
 
@@ -260,6 +261,12 @@
 <td><a href="../vital_status/">vital_status</a></td>
 <td>0..1 <br/> <a href="../PersonStatus/">PersonStatus</a></td>
 <td>living or dead status</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../of_usa_voting_age/">of_usa_voting_age</a></td>
+<td>0..1 <br/> <a href="xsd:boolean">xsd:boolean</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -339,6 +346,7 @@ slots:
 - birth_date
 - age_in_years
 - vital_status
+- of_usa_voting_age
 slot_usage:
   primary_email:
     name: primary_email
@@ -408,6 +416,16 @@ attributes:
     domain_of:
     - Person
     range: PersonStatus
+  of_usa_voting_age:
+    name: of_usa_voting_age
+    from_schema: https://w3id.org/turbomam/eq-expr-sandbox
+    rank: 1000
+    alias: of_usa_voting_age
+    owner: Person
+    domain_of:
+    - Person
+    range: boolean
+    equals_expression: '{age_in_years} &gt;= 18'
   id:
     name: id
     description: A unique identifier for a thing
