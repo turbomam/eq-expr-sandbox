@@ -40,6 +40,7 @@ classes:
       - birth_date
       - age_in_years
       - vital_status
+      - of_usa_voting_age
     slot_usage:
       primary_email:
         pattern: "^\\S+@[\\S+\\.]+\\S+"
@@ -55,6 +56,9 @@ classes:
         inlined: true
 
 slots:
+  of_usa_voting_age:
+    range: boolean
+    equals_expression: "{age_in_years} >= 18"
   id:
     identifier: true
     slot_uri: schema:identifier
