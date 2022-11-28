@@ -77,7 +77,7 @@ slots:
     range: boolean
     any_of:
       - equals_expression: "{annual_income} > 100000"
-      - equals_expression: "{saving } > 500000"
+      - equals_expression: "{savings} > 500000"
   of_usa_voting_age:
     range: boolean
     equals_expression: "{age_in_years} >= 18"
